@@ -1,2 +1,19 @@
 # Mercury Spigot Library
-![](https://ledev.ru/files/github/MercuryPOSTER.png)
+
+<img src="https://ledev.ru/files/github/MercuryPOSTER.png" width="900px">
+
+## Содержание
+
+1. Установка
+   - импорт библиотеки в pom.xml
+
+2. Начало разработки
+   - редактирование главного класса
+   - новый функционал главного класса
+     - метод getInstance
+     - методы для работы с файлом конфигурации
+
+4. О проекте и тех его создал 
+   - о проекте
+   - об авторах
+   - отделная благодарность
