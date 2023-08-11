@@ -19,13 +19,11 @@ public class MJavaPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        super.onEnable();
     }
 
     @Override
     public void onDisable() {
         instance = null;
-        super.onDisable();
     }
 
     public static MJavaPlugin getInstance() {
