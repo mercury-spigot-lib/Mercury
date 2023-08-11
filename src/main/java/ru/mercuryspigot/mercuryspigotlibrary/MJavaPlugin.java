@@ -2,6 +2,7 @@ package ru.mercuryspigot.mercuryspigotlibrary;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Color;
+import org.bukkit.Server;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class MJavaPlugin extends JavaPlugin {
+public abstract class MJavaPlugin extends JavaPlugin {
 
     protected static MJavaPlugin instance;
 
@@ -28,6 +29,10 @@ public class MJavaPlugin extends JavaPlugin {
 
     public static MJavaPlugin getInstance() {
         return instance;
+    }
+
+    public static Server getBukkitServer() {
+        return instance.getServer();
     }
 
     public static FileConfiguration getCfg() {
