@@ -31,16 +31,10 @@ public class MEntityBuilder {
         LivingEntity nEntity = (LivingEntity) location.getWorld().spawnEntity(location, entity.getType());
         nEntity.setAI(entity.hasAI());
         nEntity.setCollidable(entity.isCollidable());
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_ARMOR).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_ARMOR).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_ATTACK_SPEED).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_LUCK).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_LUCK).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_FLYING_SPEED).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_FLYING_SPEED).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(m);
-        for (AttributeModifier m : entity.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).getModifiers()) nEntity.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).addModifier(m);
+        for (Attribute a : Attribute.values()) {
+            nEntity.getAttribute(a).setBaseValue(entity.getAttribute(a).getBaseValue());
+            for (AttributeModifier m : entity.getAttribute(a).getModifiers()) nEntity.getAttribute(a).addModifier(m);
+        }
         nEntity.setHealth(entity.getHealth());
         nEntity.setGliding(entity.isGliding());
         nEntity.setCanPickupItems(entity.getCanPickupItems());
@@ -285,6 +279,13 @@ public class MEntityBuilder {
     public MEntityBuilder removeAllAttributeModifiers(Attribute attribute) {
         for (AttributeModifier m : entity.getAttribute(attribute).getModifiers())
             entity.getAttribute(attribute).removeModifier(m);
+        return this;
+    }
+
+    public MEntityBuilder resetAttribute(Attribute attribute) {
+        for (AttributeModifier m : entity.getAttribute(attribute).getModifiers())
+            entity.getAttribute(attribute).removeModifier(m);
+        entity.getAttribute(attribute).setBaseValue(entity.getAttribute(attribute).getDefaultValue());
         return this;
     }
 
