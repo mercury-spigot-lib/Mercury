@@ -1,6 +1,6 @@
 # Mercury Spigot Library (1.13+)
 
-![](https://ledev.ru/files/github/MercuryPOSTER.png)
+![](https://ledev.ru/files/github/MercurySpigotLibraryPOSTER.png)
 
 ## Содержание
 
